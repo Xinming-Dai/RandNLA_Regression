@@ -1,0 +1,14 @@
+params:
+n = 1024
+p = 20
+dist = laplace, point_mass, cauchy, gamma (not symmetric), normal (test our robust proposal)
+n_trials = 100
+delta = .01, .05, .1, .2
+sketch = sparse_sign, clarkson_woodruff, uniform_sparse, hadamard, normal, uniform_dense, proposal1, proposal2
+tau = 1.35 or MADN
+k = 20, 40, 80, 160
+# k = p, 2p, 4p, 8p (due to the A Statistical Perspective on Randomized Sketching for Ordinary Least-Squares paper)
+
+test ride command:
+python simulation.py --n 100 --k 50 --dist "point_mass" --param "1" --n_trials "1" --delta "0.1" --sketch "proposal1" --tau 1.35
+python simulation.py --n 100 --k 50 --dist "point_mass" --param "1" --n_trials "1" --delta "0.1" --sketch "hadamard" --tau 1.35

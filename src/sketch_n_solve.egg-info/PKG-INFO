@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: sketch_n_solve
+Version: 0.0.2
+Summary: Common sketch matrix construction methods for randomized numerical linear algebra (RandNLA).
+Author-email: Alex Lavaee <lavaalex3@gmail.com>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.26.4
+Requires-Dist: scipy>=1.13.0
+Requires-Dist: matplotlib>=3.8.4
+Requires-Dist: seaborn>=0.13.2
+Requires-Dist: tqdm>=4.66.2
+Requires-Dist: scienceplots>=2.1.1
+Requires-Dist: numba>=0.59.1
+
+# RandNLA_Regression
