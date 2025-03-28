@@ -1,8 +1,11 @@
 import numpy as np
 import time
+
+import sklearn.linear_model
 from sketch_n_solve.solve.least_squares import LeastSquares
 from utils import generate_cotaminated_error, coefficients, data_generation, parse_args
 from tqdm import tqdm
+import sklearn
 
 # Recommended to use either "clarkson_woodruff" or "uniform_sparse"
 # for best results out of the box
@@ -46,6 +49,21 @@ if __name__ == "__main__":
             end_time = time.time()
             time_elapsed = end_time - start_time
             tau = np.round(tau, 2)
+        elif sketch_fn in ['OLS']:
+            model = sklearn.linear_model.LinearRegression()
+            start_time = time.time()
+            model.fit(X, Y)
+            beta_hat = model.coef_
+            end_time = time.time()
+            time_elapsed = end_time - start_time
+        elif sketch_fn in ['Huber']:
+            model = sklearn.linear_model.HuberRegressor(epsilon=tau)
+            start_time = time.time()
+            model.fit(X, Y)
+            beta_hat = model.coef_
+            end_time = time.time()
+            tau = np.round(tau, 2)
+            time_elapsed = end_time - start_time
         else:
             kw = {'k': k}
             lsq = LeastSquares(sketch_fn, seed+m)

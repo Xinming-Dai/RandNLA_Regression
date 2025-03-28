@@ -14,7 +14,7 @@ for k in "${k_values[@]}"; do
         for delta in "${delta_values[@]}"; do
             for sketch in "${sketch_values[@]}"; do
             echo "Running simulation for n=$n, k=$k, dist=$dist, delta=$delta, sketch=$sketch"
-                if [ "$sketch" == "proposal1" ]; then
+                if [ "$sketch" == "Huber" ]; then
                     for t in "${tau[@]}"; do
                         python simulation.py --n "$n" --p "20" --dist "$dist" --param "1" --n_trials "$n_trials" --delta "$delta" --sketch "$sketch" --tau "$t" --k "$k"
                     done
@@ -23,6 +23,8 @@ for k in "${k_values[@]}"; do
                     for t in "${tau[@]}"; do
                         python simulation.py --n "$n" --p "20" --dist "$dist" --param "1" --n_trials "$n_trials" --delta "$delta" --sketch "$sketch" --tau "$t" --k "$k"
                     done
+                else 
+                    python simulation.py --n "$n" --p "20" --dist "$dist" --param "1" --n_trials "$n_trials" --delta "$delta" --sketch "$sketch" --k "$k"
                 fi
             done
         done
