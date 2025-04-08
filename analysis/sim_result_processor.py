@@ -96,7 +96,7 @@ class HTMLTable:
         return tables_data
     
 if __name__ == "__main__":
-    with open('./RandNLA_Regression/vis.html', 'r') as file:
+    with open('./RandNLA_Regression/analysis/vis.html', 'r') as file:
         html_content = file.read()
     table_names = ['delta_0_1_normal', 'delta_0_1_laplace', 'delta_0_1_cauchy', 'delta_0_1_point_mass', 
                    'delta_0_2_cauchy', 'delta_0_2_point_mass',
