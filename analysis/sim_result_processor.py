@@ -22,12 +22,16 @@ class TableProcessor:
             method[pd.Series]: sketching method.
             estimates ± se dataframe [pd.DataFrame]: each row corresponds to a method. Print column name to see more details about the column.
         """
+        rename_method = {'proposal1':'RRR', 
+                             'proposal1(adaptive)': 'RRR(adaptive)', 
+                             'proposal2':'RRS', 
+                             'proposal2(adaptive)':'RRS(adaptive)'}
         df = pd.read_html(self.html_table)[0]
         methods = df.iloc[:, 0]
         df = df.drop(df.columns[0], axis=1)
-        self.methods = methods
+        self.methods = [rename_method[method] if method in rename_method else method for method in methods]
         self.df = df
-        return methods, df
+        return self.methods, self.df
 
     def _extract_estimate_and_ci(self, value:str) -> Union[float, float]:
         """Extract estimate and standard errors. Split estimates ± se [str] and convert them to float.
